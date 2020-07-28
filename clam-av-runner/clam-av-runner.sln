@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clam-av-runner", "clam-av-runner\clam-av-runner.csproj", "{8CD7F373-9591-4305-B210-2369AAB2AECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my-web-app", "my-web-app\my-web-app.csproj", "{94912E48-38E2-416A-B2E0-880B34CB24AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CD7F373-9591-4305-B210-2369AAB2AECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD7F373-9591-4305-B210-2369AAB2AECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD7F373-9591-4305-B210-2369AAB2AECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD7F373-9591-4305-B210-2369AAB2AECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94912E48-38E2-416A-B2E0-880B34CB24AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94912E48-38E2-416A-B2E0-880B34CB24AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94912E48-38E2-416A-B2E0-880B34CB24AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94912E48-38E2-416A-B2E0-880B34CB24AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25F69A7A-AFC6-45F4-9C3F-523BB245FF2A}
+	EndGlobalSection
+EndGlobal
