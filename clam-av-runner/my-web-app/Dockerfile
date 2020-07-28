@@ -73,8 +73,8 @@ EXPOSE 5050
 
 
 # av daemon bootstrapping
-COPY bootstrap.sh /
-COPY start.sh /
+COPY bootstrap.sh /bootstrap
+COPY start.sh /start
 COPY main.sh /
 CMD ["/main.sh"]
 
