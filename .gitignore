@@ -6,3 +6,5 @@ clam-av-runner/my-web-app/bin/Release/
 clam-av-runner/my-web-app/obj/Debug/
 clam-av-runner/my-web-app/obj/Release/
 clam-av-runner/my-web-app/obj/
+clam-av-runner/runner/bin/
+clam-av-runner/runner/obj/

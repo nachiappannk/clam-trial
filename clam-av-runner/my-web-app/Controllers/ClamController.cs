@@ -21,7 +21,10 @@ namespace my_web_app.Controllers
             {
                 name = HttpUtility.UrlDecode(name);
                 var clam = new ClamClient("localhost", 3310);
-
+                var fileInfo = new System.IO.FileInfo(name);
+                if (!fileInfo.Exists) {
+                    return new Result() { FileName = name, IsCompleted = false };
+                }
                 var sw = Stopwatch.StartNew();
 
                 var scanResult = await clam.ScanFileOnServerAsync(name);  //any file you would like!
@@ -32,12 +35,12 @@ namespace my_web_app.Controllers
                 switch (scanResult.Result)
                 {
                     case ClamScanResults.Clean:
-                        return new Result() { FileName = name, IsCompleted = true, IsClean = true, TimeTakenInMs = time };
+                        return new Result() { FileName = name, IsCompleted = true, IsClean = true, TimeTakenInMs = time , FileSize = fileInfo.Length};
                     case ClamScanResults.VirusDetected:
-                        return new Result() { FileName = name, IsCompleted = true, IsClean = false, TimeTakenInMs = time };
+                        return new Result() { FileName = name, IsCompleted = true, IsClean = false, TimeTakenInMs = time, FileSize = fileInfo.Length };
                     case ClamScanResults.Error:
                     default:
-                        return new Result() { FileName = name, IsCompleted = false };
+                        return new Result() { FileName = name, IsCompleted = false, FileSize = fileInfo.Length  };
                 }
             }
             catch(Exception e)
@@ -54,6 +57,7 @@ namespace my_web_app.Controllers
         public bool IsCompleted { get; set; }
         public long TimeTakenInMs { get; set; }
 
+        public long FileSize { get; set; }
         public String FileName { get; set; }
     }
 }
