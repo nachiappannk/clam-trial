@@ -1,20 +1,5 @@
-# Stage 1 : Building of the asp.net core application
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
-WORKDIR /app
-
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
-
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
-
-# Stage 2 : Bringing up clam av and fresh clam in a new docker image
-
-
 FROM debian:buster-slim
+LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
 # Debian Base to use
 ENV DEBIAN_VERSION buster
@@ -52,28 +37,19 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     if [ -n "$HTTPProxyPort"   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
+# env based configs - will be called by bootstrap.sh
+COPY envconfig.sh /
+
+COPY check.sh /
+
 # volume provision
 VOLUME ["/var/lib/clamav"]
 
-
-# copy scripts
-COPY script-envconfig.sh /
-COPY script-check.sh /
-COPY script-startup.sh /
-COPY script-bootstrap.sh /
-COPY script-bootstrap-asp.sh /
-COPY script-dotnet-install.sh /
-
-
-# Installing dot net core and copying the executables from build
-RUN chmod +x ./script-dotnet-install.sh
-RUN ./script-dotnet-install.sh
-COPY --from=build-env /app/out /
-ENV ASPNETCORE_URLS=http://+:5050
-
 # port provision
 EXPOSE 3310
-EXPOSE 5050
 
-CMD ["/script-startup.sh"]
-HEALTHCHECK --start-period=500s CMD /script-check.sh
+# av daemon bootstrapping
+COPY bootstrap.sh /
+CMD ["/bootstrap.sh"]
+
+HEALTHCHECK --start-period=500s CMD /check.sh

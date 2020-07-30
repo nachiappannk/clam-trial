@@ -2,11 +2,10 @@
   
 set -m
   
-./start &
+./script-bootstrap-asp.sh &
 
 sleep 20
   
-./bootstrap
-  
+/bootstrap.sh
 
 #fg %1
