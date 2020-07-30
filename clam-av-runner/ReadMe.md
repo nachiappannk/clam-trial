@@ -10,13 +10,11 @@ The file to be scanned has to be copied manually
 
 ## Steps to build
  * In cygwin, run `dos2unix *.sh`
- * In cygwin, run `cd my-web-app`
- * In cygwin, run `dos2unix *.sh`
- * In cygwin, run `cd ..`
+ * In cygwin, run `dos2unix.exe ./my-web-app/*.sh`
  * In cygwin, run `./build.sh`
 
 ## Steps to run
- * In cygwin, run `./build.sh`
+ * In cygwin, run `./run.sh`
 
 ### Note
  * This should run the application at localhost:5050
