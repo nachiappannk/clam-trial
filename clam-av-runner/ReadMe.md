@@ -25,5 +25,8 @@ The file to be scanned has to be copied manually
  * run a command such as `docker cp <D://text.mp4> my-clam-run:/files-to-be-scaned/text.mp4
  * Through the swagger page, hit the end point `/Clam/files/{name}/scan` with `/files-to-be-scaned/text.mp4` as the parameter
  * The end point should return the scanned details
+ 
+# Steps to Stop and Remove
+ * In cygwin, run `docker stop my-clam-run  && docker rm my-clam-run`
 
 
