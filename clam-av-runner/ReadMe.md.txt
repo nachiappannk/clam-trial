@@ -1,0 +1,24 @@
+# About
+The code packages a asp.net core web application and clam av antivirus in one docker
+The asp.net core web application has an end point to scan a file for antivirus with the clamAV antivirus
+The file to be scanned has to be copied manually
+
+# Prerequisite
+ * docker is installed
+ * cygwin is installed
+ * dos2unix package is installed in cygwin
+
+# Steps to build
+ * In cygwin, run `dos2unix *.sh`
+ * In cygwin, run `cd my-web-app`
+ * In cygwin, run `dos2unix *.sh`
+ * In cygwin, run `cd ..`
+ * In cygwin, run `./build.sh`
+
+# Steps to run
+ * In cygwin, run `./build.sh`
+## Note
+ * This should run the application at localhost:5050
+ * This should expose the end point at http://localhost:5050/swagger/index.html
+ * After seeing the swagger page wait for about 5 mins to wait for clam av to update the virus signatures
+
