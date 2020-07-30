@@ -14,6 +14,8 @@ COPY script-dotnet-install.sh /
 RUN chmod +x ./script-dotnet-install.sh
 RUN ./script-dotnet-install.sh
 
+RUN mkdir files-to-be-scaned
+
 COPY --from=build-env /app/out /
 ENV ASPNETCORE_URLS=http://+:5050
 
